@@ -1,0 +1,98 @@
+﻿.room__box {
+    position: relative;
+}
+
+.room__heart {
+    position: absolute;
+    right: 10px;
+}
+
+    .room__heart .bx-heart {
+        font-size: 30px;
+        cursor: pointer;
+    }
+
+    .room__heart .bxs-heart {
+        font-size: 30px;
+        cursor: pointer;
+        color: red;
+        display: none;
+    }
+
+    .room__heart.active .bx-heart {
+        display: none;
+    }
+
+    .room__heart.active .bx-heart {
+        display: inline-block;
+    }
+
+.hotel__fillter{
+    height:calc(100vw - 370px);
+}
+.hotel__fillter-item {
+    display: block;
+    padding-top: 3px;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.room__box-img{
+    width:350px;
+}
+.room__box-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.hotel__fillter-item input {
+    transform: scale(1.3); /* Tăng kích thước 1.5 lần */
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.hotel__fillter-item input:checked ~ .checkmark {
+    background-color: #2196F3;
+    border: none;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.hotel__fillter-item input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.hotel__fillter-item .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
