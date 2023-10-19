@@ -1,0 +1,4 @@
+-Chức năng Admin: xóa phòng, quản lý tài khoản người dùng, duyêtj phòng.
+-Người dùng (đối tác): đăng thông tin phòng khách sạn đó, quản lý phòng(a,r,e) quản lý thông tin đặt phòng..
+- người dùng : xem phòng đặt phòng
+nhiệm vụ admin k có chức năng thêm phòng chỉ có người dùng thuộc đối tác mới đăng thông tin đc. nên có 3 cái phân quyền chức năng.
