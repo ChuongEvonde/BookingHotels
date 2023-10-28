@@ -24,5 +24,15 @@ namespace Booking.Controllers
             ViewBag.CityName = cityName;
             return View(dsrooms.dsRoom(cityName,IdPrice));
         }
+       [HttpGet]
+        public ActionResult RoomDetail(int roomId)
+        {
+            mapRoomDetail getRoomDetail = new mapRoomDetail();
+            List<roomDetail> getRoomImageDetail = getRoomDetail.GetRoomImageDetail(roomId);
+            List<convenient> getRoomConvenient = getRoomDetail.GetRoomConvenientDetail(roomId);
+            ViewBag.List_Image = getRoomImageDetail;
+            ViewBag.List_Convenient = getRoomConvenient;
+            return View(getRoomDetail.GetRoomDetails(roomId));
+        }
     }
 }

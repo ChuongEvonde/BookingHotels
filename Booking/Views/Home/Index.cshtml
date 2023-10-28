@@ -51,7 +51,7 @@
                     @foreach (var item in ViewBag.dsCity)
                     {
 
-                        <form action="~/Hotel/Index" method="post" class="popular__grid-item">
+                        <form action="@Url.Action("Index", "Hotel", new { city = item.city_name })" method="post" class="popular__grid-item">
                             <button type="submit" name="cityName" value="@item.city_name">
                                 <img src="~/Content/Images/@item.avatar_city" />
                                 <div class="popular__grid-des">
@@ -74,7 +74,7 @@
                     <div class="swiper-wrapper">
                         @foreach (var item in Model)
                         {
-                        <form action="~/Hotel" method="post" class="swiper-slide explore__silde-box">
+                        <form action="@Url.Action("Index", "Hotel", new { city = item.city_name })" method="post" class="swiper-slide explore__silde-box">
                             <button type="submit" name="cityName" value="@item.city_name">
                                 <img src="~/Content/Images/@item.avatar_city" alt="" class="swiper-slide-img">
                                 <h4 class="explore__slide-title">@item.city_name</h4>

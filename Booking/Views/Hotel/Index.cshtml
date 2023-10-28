@@ -62,7 +62,7 @@
             <div class="room__list ">
                 @foreach (var item in Model)
                 {
-                    <form action="~/RoomDetail/Index" method="post">
+                    <form method="get" action="@Url.Action("RoomDetail", "Hotel", new { roomId = item.id})">
                         <input type="hidden" name="roomId" value="@item.id" />
                         <div class="room__box d-flex p-3 border rounded mb-5 ">
                             <div class="room__box-img mr-4">
