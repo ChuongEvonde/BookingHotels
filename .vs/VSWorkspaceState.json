@@ -3,9 +3,10 @@
     "",
     "\\Booking",
     "\\Booking\\Controllers",
+    "\\Booking\\Models",
     "\\Booking\\Views",
     "\\Booking\\Views\\Shared"
   ],
-  "SelectedNode": "\\Booking\\Controllers\\HotelController.cs",
+  "SelectedNode": "\\Booking\\Models\\mapRoom.cs",
   "PreviewInSolutionExplorer": false
 }
