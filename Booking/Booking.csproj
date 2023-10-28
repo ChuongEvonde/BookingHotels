@@ -367,6 +367,7 @@
     <Content Include="Views\Shared\_LayoutMain.cshtml" />
     <Content Include="Views\Hotel\Index.cshtml" />
     <Content Include="Views\RoomDetail\Index.cshtml" />
+    <Content Include="Views\Hotel\BookingSucsess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

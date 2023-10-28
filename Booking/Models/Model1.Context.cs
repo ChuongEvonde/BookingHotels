@@ -25,12 +25,12 @@ namespace Booking.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<city> cities { get; set; }
         public virtual DbSet<convenient> convenients { get; set; }
         public virtual DbSet<hotel_type> hotel_type { get; set; }
         public virtual DbSet<price_level> price_level { get; set; }
         public virtual DbSet<room> rooms { get; set; }
         public virtual DbSet<roomDetail> roomDetails { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<city> cities { get; set; }
     }
 }

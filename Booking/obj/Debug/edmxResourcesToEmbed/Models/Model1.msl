@@ -1,15 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="Booking_HotelsModelStoreContainer" CdmEntityContainer="Booking_HotelsEntities">
-    <EntitySetMapping Name="cities">
-      <EntityTypeMapping TypeName="Booking_HotelsModel.city">
-        <MappingFragment StoreEntitySet="city">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="city_name" ColumnName="city_name" />
-          <ScalarProperty Name="avatar_city" ColumnName="avatar_city" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="convenients">
       <EntityTypeMapping TypeName="Booking_HotelsModel.convenient">
         <MappingFragment StoreEntitySet="convenient">
@@ -72,6 +63,15 @@
           <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
           <ScalarProperty Name="version" ColumnName="version" />
           <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cities">
+      <EntityTypeMapping TypeName="Booking_HotelsModel.city">
+        <MappingFragment StoreEntitySet="city">
+          <ScalarProperty Name="avatar_city" ColumnName="avatar_city" />
+          <ScalarProperty Name="city_name" ColumnName="city_name" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

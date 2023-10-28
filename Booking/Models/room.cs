@@ -34,12 +34,12 @@ namespace Booking.Models
         public Nullable<int> city_id { get; set; }
         public Nullable<int> price_level_id { get; set; }
     
-        public virtual city city { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<convenient> convenients { get; set; }
         public virtual hotel_type hotel_type { get; set; }
         public virtual price_level price_level { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<roomDetail> roomDetails { get; set; }
+        public virtual city city { get; set; }
     }
 }

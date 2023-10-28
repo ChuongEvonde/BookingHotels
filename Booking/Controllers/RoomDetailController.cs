@@ -25,7 +25,15 @@ namespace Booking.Controllers
             ViewBag.List_Convenient = getRoomConvenient;
             return View(getRoomDetail.GetRoomDetails(roomId));
         }
+        public ActionResult BookingSuccess()
+        {
+            // Thực hiện các thao tác liên quan đến đặt phòng thành công ở đây
+            return View();
+        }
 
-        
+
+
+
+
     }
 }

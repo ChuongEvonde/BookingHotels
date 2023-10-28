@@ -165,15 +165,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Booking_HotelsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="city">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="city_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="avatar_city" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="rooms" Relationship="Self.FK_room_city" FromRole="city" ToRole="room" />
-        </EntityType>
         <EntityType Name="convenient">
           <Key>
             <PropertyRef Name="id" />
@@ -217,11 +208,11 @@
           <Property Name="hotel_type_id" Type="Int32" />
           <Property Name="city_id" Type="Int32" />
           <Property Name="price_level_id" Type="Int32" />
-          <NavigationProperty Name="city" Relationship="Self.FK_room_city" FromRole="room" ToRole="city" />
           <NavigationProperty Name="convenients" Relationship="Self.FK_convenient_room" FromRole="room" ToRole="convenient" />
           <NavigationProperty Name="hotel_type" Relationship="Self.FK_room_hotel_type" FromRole="room" ToRole="hotel_type" />
           <NavigationProperty Name="price_level" Relationship="Self.FK_room_price_level" FromRole="room" ToRole="price_level" />
           <NavigationProperty Name="roomDetails" Relationship="Self.FK_roomDetail_room" FromRole="room" ToRole="roomDetail" />
+          <NavigationProperty Name="city" Relationship="Booking_HotelsModel.FK_room_city" FromRole="room" ToRole="city" />
         </EntityType>
         <EntityType Name="roomDetail">
           <Key>
@@ -242,18 +233,6 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <Association Name="FK_room_city">
-          <End Role="city" Type="Self.city" Multiplicity="0..1" />
-          <End Role="room" Type="Self.room" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="city">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="room">
-              <PropertyRef Name="city_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_convenient_room">
           <End Role="room" Type="Self.room" Multiplicity="0..1" />
           <End Role="convenient" Type="Self.convenient" Multiplicity="*" />
@@ -303,17 +282,12 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Booking_HotelsEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="cities" EntityType="Self.city" />
           <EntitySet Name="convenients" EntityType="Self.convenient" />
           <EntitySet Name="hotel_type" EntityType="Self.hotel_type" />
           <EntitySet Name="price_level" EntityType="Self.price_level" />
           <EntitySet Name="rooms" EntityType="Self.room" />
           <EntitySet Name="roomDetails" EntityType="Self.roomDetail" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <AssociationSet Name="FK_room_city" Association="Self.FK_room_city">
-            <End Role="city" EntitySet="cities" />
-            <End Role="room" EntitySet="rooms" />
-          </AssociationSet>
           <AssociationSet Name="FK_convenient_room" Association="Self.FK_convenient_room">
             <End Role="room" EntitySet="rooms" />
             <End Role="convenient" EntitySet="convenients" />
@@ -330,22 +304,39 @@
             <End Role="room" EntitySet="rooms" />
             <End Role="roomDetail" EntitySet="roomDetails" />
           </AssociationSet>
+          <EntitySet Name="cities" EntityType="Booking_HotelsModel.city" />
+          <AssociationSet Name="FK_room_city" Association="Booking_HotelsModel.FK_room_city">
+            <End Role="city" EntitySet="cities" />
+            <End Role="room" EntitySet="rooms" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="city_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="avatar_city" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="rooms" Relationship="Booking_HotelsModel.FK_room_city" FromRole="city" ToRole="room" />
+        </EntityType>
+        <Association Name="FK_room_city">
+          <End Type="Booking_HotelsModel.city" Role="city" Multiplicity="0..1" />
+          <End Type="Booking_HotelsModel.room" Role="room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="room">
+              <PropertyRef Name="city_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Booking_HotelsModelStoreContainer" CdmEntityContainer="Booking_HotelsEntities">
-          <EntitySetMapping Name="cities">
-            <EntityTypeMapping TypeName="Booking_HotelsModel.city">
-              <MappingFragment StoreEntitySet="city">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="city_name" ColumnName="city_name" />
-                <ScalarProperty Name="avatar_city" ColumnName="avatar_city" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="convenients">
             <EntityTypeMapping TypeName="Booking_HotelsModel.convenient">
               <MappingFragment StoreEntitySet="convenient">
@@ -408,6 +399,15 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cities">
+            <EntityTypeMapping TypeName="Booking_HotelsModel.city">
+              <MappingFragment StoreEntitySet="city">
+                <ScalarProperty Name="avatar_city" ColumnName="avatar_city" />
+                <ScalarProperty Name="city_name" ColumnName="city_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
