@@ -27,5 +27,6 @@ namespace Booking.Models
             var convenient = db.convenients.Where(r => r.room_id == roomId).ToList();
             return convenient;
         }
+      
     }
 }

@@ -117,6 +117,7 @@ body {
 .room__box{
     display:flex;
     gap:10px;
+    transition: all 0.2s linear;
 }
 .room__box.active {
     display: none;
@@ -147,7 +148,7 @@ input[type="file"] {
     display: none;
 }
 
-label {
+.upload-iamge label {
     display: block;
     position: relative;
     background-color: #025bee;
@@ -210,3 +211,28 @@ figcaption {
     height:100%;
     flex:1;
 }
+.ck-editor__main {
+    height: 60px;
+}
+
+.room__btn{
+    display:flex;
+    gap:6px;
+    align-items:center;
+}
+.room__btn .btn-prev i {
+        font-size: 30px;
+        color: #0071c2;
+    }
+.room__btn .btn-prev {
+        width: 70px;
+        border: 1px solid #0071c2;
+        border-radius:6px;
+}
+    .room__btn .btn-prev:hover{
+        background-color:#c8cdd0;
+        transition: 0.2s linear;
+    }
+    .room__btn .btn-next, .room__btn .btn-post {
+        flex: 1;
+    }

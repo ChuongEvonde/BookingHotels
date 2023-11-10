@@ -242,7 +242,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Areas\Partner\Controllers\CreateRoomController.cs" />
+    <Compile Include="Areas\Partner\Controllers\HomeController.cs" />
     <Compile Include="Areas\Partner\PartnerAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HotelController.cs" />
@@ -343,9 +343,9 @@
     </Content>
     <Content Include="Areas\Partner\Views\Shared\_LayoutPartnerMain.cshtml" />
     <Content Include="Areas\Partner\Views\web.config" />
-    <Content Include="Areas\Partner\Views\CreateRoom\Index.cshtml" />
-    <Content Include="Areas\Partner\Views\CreateRoom\Create.cshtml" />
-    <Content Include="Areas\Partner\Views\CreateRoom\_Convenient.cshtml" />
+    <Content Include="Areas\Partner\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Partner\Views\Home\AddRoom.cshtml" />
+    <Content Include=".editorconfig" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

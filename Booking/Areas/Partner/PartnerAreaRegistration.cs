@@ -17,7 +17,8 @@ namespace Booking.Areas.Partner
             context.MapRoute(
                 "Partner_default",
                 "Partner/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "Booking.Areas.Partner.Controllers" }
             );
         }
     }

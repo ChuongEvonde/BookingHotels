@@ -19,6 +19,18 @@ namespace Booking.Models
              ).ToList();
             return data;
         }
+        public List<room> dsRoom( int? IDHotelType)
+        {
+            Booking_HotelsEntities db = new Booking_HotelsEntities();
+            var data = (from room in db.rooms
+                        join hotel_type in db.hotel_type on room.hotel_type_id equals hotel_type.id
+                        where hotel_type.id == IDHotelType || IDHotelType == null
+                        select room).ToList();
+            return data;
+        }
+
+      
+
         public List<room> rooms()
         {
             return (new Booking_HotelsEntities().rooms.ToList());
@@ -35,6 +47,12 @@ namespace Booking.Models
             var count = db.rooms.Count(r => r.city_id == id);
             return count;
         }
-      
+        public int CountRoomWithHotelType(int IDHotelType)
+        {
+            Booking_HotelsEntities db = new Booking_HotelsEntities();
+            var count = db.rooms.Count(r => r.hotel_type_id == IDHotelType);
+            return count;
+        }
+
     } 
 }
