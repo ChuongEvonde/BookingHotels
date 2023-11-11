@@ -245,6 +245,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HotelController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RoomDetailController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -316,6 +317,7 @@
     <Content Include="Content\main.js" />
     <Content Include="Content\hotel.css" />
     <Content Include="Content\roomDetail.css" />
+    <Content Include="Content\CSS\Login.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -368,6 +370,8 @@
     <Content Include="Views\Hotel\Index.cshtml" />
     <Content Include="Views\RoomDetail\Index.cshtml" />
     <Content Include="Views\Hotel\BookingSucsess.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
