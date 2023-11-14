@@ -48,6 +48,7 @@
     <Property Name="hotel_type_id" Type="int" />
     <Property Name="city_id" Type="int" />
     <Property Name="price_level_id" Type="int" />
+    <Property Name="status" Type="nvarchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="roomDetail">
     <Key>

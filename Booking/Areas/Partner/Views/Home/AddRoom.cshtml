@@ -108,8 +108,7 @@
                     @foreach (var item in ViewBag.Convenients)
                     {
                         <label class="font-weight-light hotel__fillter-item mt-2" style="font-size:14px">
-                            <input type="checkbox" value="@item.convenient_name" data-icon="@item.icon" data-convenient="@item.convenient_name" name="convenient"  >
-                           <i class=" @item.icon"></i>
+                            <input type="checkbox" value="@item.id" name="convenient"  >
                             @item.convenient_name
                             <span class="checkmark"></span>
                         </label>
@@ -135,7 +134,8 @@
         </div>
         <div class="room__box active  ">
             <div class="room__form">
-                <h5>Đăng tải ít nhất 5 ảnh của chỗ nghỉ. Càng đăng nhiều, Quý vị càng có cơ hội nhận đặt phòng. Quý vị có thể thêm ảnh sau.</h5>
+                
+                <h5>Đăng tải ít nhất 5 ảnh mô tả phòng nghỉ của bạn. Càng đăng nhiều, Quý vị càng có cơ hội nhận đặt phòng. Quý vị có thể thêm ảnh sau.</h5>
                 <div class="upload-iamge">
                     <input type="file" id="file-input" name="upload_image" accept="image/png, image/jpeg" onchange="preview()" multiple>
                     <label for="file-input">

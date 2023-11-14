@@ -54,11 +54,11 @@
             {
                 <h4>@ViewBag.Intro</h4>
             }
-            else if(ViewBag.ResultType == "CountRoomWithHotelType")
+            else if(ViewBag.ResultTypeSecond == "CountRoomWithHotelType")
             {
         <h4>Tìm Thấy  <span class="text-danger">@ViewBag.CountRoomWithHotelType</span> Loại Nghỉ Là @ViewBag.HotelType </h4>
             }
-            else
+            else if (ViewBag.ResultTypeSecond == "Flag")
             {
 
                 <h4>@ViewBag.CityName: <span>Tìm thấy <span class="text-danger">@ViewBag.CountRoom</span> Nơi Nghỉ</span> </h4>
@@ -70,7 +70,7 @@
                         <input type="hidden" name="roomId" value="@item.id" />
                         <div class="room__box d-flex p-3 border rounded mb-5 ">
                             <div class="room__box-img mr-4">
-                                <img src="~/Content/Images/@item.avatar_hotel" class="rounded" />
+                                <img src="~/Content/Images/@ViewBag.image" class="rounded" />
                             </div>
                             <div class="row room__box-content w-100">
                                 <div class="col-8">

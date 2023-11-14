@@ -24,21 +24,22 @@ namespace Booking.Areas.Partner.Controllers
         public ActionResult AddRoom()
         {
             Booking_HotelsEntities db = new Booking_HotelsEntities();
-            ViewBag.Convenients = db.convenients.ToList();
+            ViewBag.Convenients = db.convenients.Take(7).ToList();
             ViewBag.City = db.cities.ToList();
             return View();
         }
         [HttpPost, ValidateInput(false)]
-        public ActionResult AddRoom( FormCollection f,List<String> convenients, List<HttpPostedFileBase> upload_image)
+        public ActionResult AddRoom( FormCollection f, List<string> convenient, List<HttpPostedFileBase> upload_image)
         {
 
             Booking_HotelsEntities db = new Booking_HotelsEntities();
-           
 
-           
-            room rooms = new room {
-                hotel_name = f["hotelType"],
+            string name = Path.GetFileName(upload_image.First().FileName);
+
+            room Rooms = new room {
+                hotel_name = f["hotelName"],
                 room_name = f["roomName"],
+                avatar_hotel = name,
                 hotel_type_id = int.Parse(f["hotelType"]),
                 city_id = int.Parse(f["city"]),
                 address = f["address"],
@@ -47,8 +48,9 @@ namespace Booking.Areas.Partner.Controllers
                 des_room = f["desRoom"].Replace("<p>", "").Replace("</p>", "\n"),
                 price_level_id = int.Parse(f["price_level"]),
                 price = int.Parse(f["price"]), 
+                status = "Chưa Duyệt"
             };
-            db.rooms.Add(rooms);
+            db.rooms.Add(Rooms);
             db.SaveChanges();
             if (upload_image != null && upload_image.Count > 0)
             {
@@ -56,46 +58,41 @@ namespace Booking.Areas.Partner.Controllers
                 {
                     if (image != null && image.ContentLength > 0)
                     {
-                        // Tạo tên tệp duy nhất bằng cách thêm một số ngẫu nhiên vào tên tệp
                         string fileName = Path.GetFileName(image.FileName);
-                        string imageName = Path.GetFileNameWithoutExtension(fileName);
-                        string imageExtension = Path.GetExtension(fileName);
-                        string uniqueFileName = $"{imageName}_{Guid.NewGuid()}{imageExtension}";
-
-                        string imagePath = Path.Combine(Server.MapPath("~/Content/Images"), uniqueFileName);
+                        string imagePath = Path.Combine(Server.MapPath("~/Content/Images"), fileName);
                         if (!System.IO.File.Exists(imagePath))
                         {
                             image.SaveAs(imagePath);
                         }
                         roomDetail RoomDetail = new roomDetail {
-                            room_id = rooms.id,
-                            image = imagePath
+                            room_id = Rooms.id,
+                            image = fileName
                         };
                         db.roomDetails.Add(RoomDetail);
                     }
                 }
-                db.SaveChanges();
+                db.SaveChanges(); // Move this line outside the foreach loop
             }
-            if (convenients != null && convenients.Count > 0)
+            foreach (var itemID in convenient)
             {
-                foreach(var convi in convenients)
-                {
-                    
-                    string icon = Request.Form["convenient_" + convi + "_icon"];
-                    string convenient_name = Request.Form["convenient_" + convi];
-                    int latestRoomId = db.rooms.OrderByDescending(r => r.id).Select(r => r.id).FirstOrDefault();
-                    convenient convis = new convenient {
-                        room_id = latestRoomId,
-                        icon = icon,
-                        convenient_name = convenient_name,
+                var ID = int.Parse(itemID);
+                var Data = db.convenients.FirstOrDefault(c => c.id == ID);
 
-                    };
-                    db.convenients.Add(convis);
-                }
-                db.SaveChanges();
+                // Thực hiện các thao tác lưu vào cơ sở dữ liệu ở đây
+             
+                convenient newItem = new convenient  {
+                    room_id = Rooms.id,
+                    icon = Data.icon,
+                    convenient_name = Data.convenient_name,
+                };
+
+                db.convenients.Add(newItem);
             }
 
-            //string encodedDesRoom = HttpUtility.HtmlEncode(f["desRoom"]);
+            // Lưu thay đổi vào cơ sở dữ liệu
+            db.SaveChanges();
+
+
 
             return RedirectToAction("Index");
         }

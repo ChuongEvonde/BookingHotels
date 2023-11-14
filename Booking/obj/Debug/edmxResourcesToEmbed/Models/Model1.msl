@@ -40,6 +40,7 @@
     <EntitySetMapping Name="rooms">
       <EntityTypeMapping TypeName="Booking_HotelsModel.room">
         <MappingFragment StoreEntitySet="room">
+          <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="hotel_name" ColumnName="hotel_name" />
           <ScalarProperty Name="room_name" ColumnName="room_name" />

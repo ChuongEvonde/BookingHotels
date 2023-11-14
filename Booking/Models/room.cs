@@ -33,6 +33,7 @@ namespace Booking.Models
         public Nullable<int> hotel_type_id { get; set; }
         public Nullable<int> city_id { get; set; }
         public Nullable<int> price_level_id { get; set; }
+        public string status { get; set; }
     
         public virtual city city { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

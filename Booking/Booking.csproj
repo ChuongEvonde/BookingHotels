@@ -259,6 +259,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\mapHotel_type.cs" />
+    <Compile Include="Models\mapImage.cs" />
     <Compile Include="Models\mapPirce_Level.cs" />
     <Compile Include="Models\mapRoom.cs" />
     <Compile Include="Models\mapRoomDetail.cs" />
@@ -373,6 +374,7 @@
     <Content Include="Views\Shared\_LayoutMain.cshtml" />
     <Content Include="Views\Hotel\Index.cshtml" />
     <Content Include="Views\Hotel\RoomDetail.cshtml" />
+    <Content Include="Views\Hotel\Checkin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

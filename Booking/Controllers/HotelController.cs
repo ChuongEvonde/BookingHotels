@@ -9,30 +9,36 @@ namespace Booking.Controllers
 {
     public class HotelController : Controller
     {
+            Booking_HotelsEntities db = new Booking_HotelsEntities();
         public ActionResult Index()
         {
+            
             ViewBag.ResultType = "FirstActionResult";
             ViewBag.Intro = "Tận hưởng chuyến đi với kỳ lưu trú dài ngày ở khách sạn hoặc căn hộ";
-            return View(new Booking_HotelsEntities().rooms.ToList());
+            ViewBag.image = new mapImage().GetImage();
+            return View(db.rooms.ToList());
         }
         // GET: Hotel
         [HttpGet]
-        public ActionResult Index(String cityName, int? IdPrice)
+        public ActionResult IndexByCityName(String cityName, int? IdPrice)
         {
             mapRoom dsrooms = new mapRoom();
             ViewBag.CountRoom = dsrooms.CountRoom(cityName);
             ViewBag.CityName = cityName;
-            return View(dsrooms.dsRoom(cityName,IdPrice));
+            ViewBag.ResultTypeSecond = "Flag";
+            ViewBag.image = new mapImage().GetImage();
+            return View("~/Views/Hotel/Index.cshtml",dsrooms.dsRoom(cityName,IdPrice));
         }
         [HttpGet]
         public ActionResult IndexByHotelType(int IDHotelType)
         {
             Booking_HotelsEntities db = new Booking_HotelsEntities();
             mapRoom dsrooms = new mapRoom();
-            ViewBag.ResultType = "CountRoomWithHotelType";
+            ViewBag.ResultTypeLast = "CountRoomWithHotelType";
             ViewBag.CountRoomWithHotelType = dsrooms.CountRoomWithHotelType(IDHotelType);
             var hotelType = db.hotel_type.FirstOrDefault(r => r.id == IDHotelType);
             ViewBag.HotelType = hotelType.hotel_type1;
+            ViewBag.image = new mapImage().GetImage();
             return View("~/Views/Hotel/Index.cshtml",dsrooms.dsRoom(IDHotelType));
         }
         [HttpGet]
@@ -41,9 +47,13 @@ namespace Booking.Controllers
             mapRoomDetail getRoomDetail = new mapRoomDetail();
             List<roomDetail> getRoomImageDetail = getRoomDetail.GetRoomImageDetail(roomId);
             List<convenient> getRoomConvenient = getRoomDetail.GetRoomConvenientDetail(roomId);
-            ViewBag.List_Image = getRoomImageDetail;
+            ViewBag.List_Image = getRoomImageDetail.Take(5);
             ViewBag.List_Convenient = getRoomConvenient;
             return View(getRoomDetail.GetRoomDetails(roomId));
+        }
+        public ActionResult Checkin()
+        {
+            return View();
         }
     }
 }

@@ -21,7 +21,7 @@ function preview() {
         reader.readAsDataURL(file);
     }
 }
-preview();
+
 
 const boxes = document.querySelectorAll('.room__box');
 const nextButtons = document.querySelectorAll('.btn-next');

@@ -20,14 +20,7 @@ namespace Booking.Controllers
             return View(dsCity);
         }
 
-        public ActionResult Hotel()
-        {
-            return View();
-        }
-        public ActionResult RoomDetail()
-        {
-            return View();
-        }
+      
 
        
     }
