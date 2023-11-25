@@ -49,3 +49,25 @@ let updateBtnState = () => {
         }
     })
 }
+
+function changePage(pageName) {
+    var content = document.getElementById('content');
+
+    // Đổi nội dung trang dựa trên tên trang
+    switch (pageName) {
+        case 'home':
+            content.innerHTML = '<h2>Chào mừng bạn đến Trang Chủ</h2>';
+            break;
+        case 'booking':
+            content.innerHTML = '<h2>Đặt Phòng</h2><p>Điền thông tin để đặt phòng</p>';
+            break;
+        case 'room-info':
+            content.innerHTML = '<h2>Thông Tin Phòng</h2><p>Xem chi tiết về các loại phòng</p>';
+            break;
+        case 'invoice':
+            content.innerHTML = '<h2>Hóa Đơn</h2><p>Xem và quản lý hóa đơn của bạn</p>';
+            break;
+        default:
+            break;
+    }
+}

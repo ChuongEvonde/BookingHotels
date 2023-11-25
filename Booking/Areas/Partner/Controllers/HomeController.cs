@@ -97,6 +97,7 @@ namespace Booking.Areas.Partner.Controllers
             return RedirectToAction("Index");
         }
 
+        
        
     }
 

@@ -1,0 +1,255 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Agdasima&family=Poppins:wght@400;500;600&family=Roboto:wght@300;400;500;700&display=swap");
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+img {
+    width: 100%;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+button {
+    border: none;
+    outline: 0;
+    cursor: pointer;
+}
+
+    button:focus {
+        outline: none;
+    }
+
+    button:focus-visible {
+        outline: 0;
+    }
+
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+.header {
+    background-color: #003b95;
+    width: 100%;
+    max-width: 1480px;
+    height: 170px   ;
+    position: relative;
+    padding: 0;
+    background: #003580;
+  
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.65);
+    z-index: -1;
+}
+
+.navbar {
+}
+
+.header__logo span {
+    font-size: 25px;
+    color: white;
+    font-weight: bold;
+}
+
+.flag-image {
+    width: 20px;
+    height: 20px;
+}
+
+.header__title {
+    font-size: 40px;
+    color: white;
+    font-weight: bold;
+    line-height: 1.35;
+}
+
+.header__des {
+    color: white;
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: 0cap;
+}
+
+.header__search {
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    transform: translate(50%, 50%);
+    padding: 4px;
+    background-color: #ffb700;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    gap: 8px;
+    border-radius: 8px;
+}
+
+.header__search-group {
+    height: 100%;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.header__search-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.header__search-input {
+    outline: none;
+    border: 0;
+    padding: 8px 4px;
+    width: 100%;
+}
+
+.header__search-btn {
+    height: 100%;
+    width: 150px;
+    font-size: 20px;
+}
+
+.header__search-price {
+    width: 200px;
+    background-color: white;
+    height: 100%;
+    border-radius: 8px;
+}
+
+.header__search-select {
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+}
+
+    .header__search-select:focus-visible {
+        outline: none;
+    }
+
+.header__search-price btn {
+    outline: none;
+    background-color: transparent;
+    border: 0;
+}
+
+.header__search-price button {
+    background-color: white;
+}
+
+.header__nav-user--dropdown.dropdown-toggle::after {
+    display: none !important;
+}
+
+.header__nav-user--dropdown {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+
+    .header__nav-user--dropdown img {
+        width: 20px;
+        height: 20px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+.header__nav-user-avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffb700;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+    .header__nav-user-avatar span {
+        color: black;
+        font-size: 15px;
+    }
+
+.user-name {
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.header__nav-user--group button:focus {
+    box-shadow: none;
+}
+
+.header__nav-user--item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 17px;
+}
+
+.header_links a i{
+    font-size:30px;
+}
+.header_links a span{
+    font-size: 20px;
+}
+.header_links a{
+    text-decoration:none;
+    padding:8px;
+}
+    .header_links a:hover {
+        background-color: #1f4e8f;
+    }
+    .header_links {
+        gap: 0 50px;
+        justify-content: center;
+    }
+
+.general_list{
+    margin-top:18px;
+    display:flex;
+    gap:15px;
+    max-width: 700px;
+    justify-content:space-between
+}
+.general_item{
+    display:flex;
+    flex-direction:column;
+    
+    text-align:center;
+    gap:10px;
+}
+.general_item i{
+    font-size:35px;
+}
+    .general_item span {
+        font-size: 20px;
+        font-weight: 500;
+        color: #023e8a;
+    }
+.general_quality{
+    color:black !important;
+    font-weight:bold;
+}
+.general {
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}

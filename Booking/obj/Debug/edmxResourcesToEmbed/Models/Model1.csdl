@@ -58,6 +58,7 @@
     <NavigationProperty Name="price_level" Relationship="Self.FK_room_price_level" FromRole="room" ToRole="price_level" />
     <NavigationProperty Name="roomDetails" Relationship="Self.FK_roomDetail_room" FromRole="room" ToRole="roomDetail" />
     <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="approve" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="roomDetail">
     <Key>

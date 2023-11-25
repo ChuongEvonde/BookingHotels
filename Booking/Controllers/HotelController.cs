@@ -9,14 +9,15 @@ namespace Booking.Controllers
 {
     public class HotelController : Controller
     {
-            Booking_HotelsEntities db = new Booking_HotelsEntities();
+         Booking_HotelsEntities db = new Booking_HotelsEntities();
         public ActionResult Index()
         {
             
             ViewBag.ResultType = "FirstActionResult";
             ViewBag.Intro = "Tận hưởng chuyến đi với kỳ lưu trú dài ngày ở khách sạn hoặc căn hộ";
             ViewBag.image = new mapImage().GetImage();
-            return View(db.rooms.ToList());
+            var data = db.rooms.Where(r => r.status == "Còn Trống" && r.approve == "Đã Duyệt").ToList();
+            return View(data);
         }
         // GET: Hotel
         [HttpGet]
@@ -26,7 +27,7 @@ namespace Booking.Controllers
             ViewBag.CountRoom = dsrooms.CountRoom(cityName);
             ViewBag.CityName = cityName;
             ViewBag.ResultTypeSecond = "Flag";
-            ViewBag.image = new mapImage().GetImage();
+            
             return View("~/Views/Hotel/Index.cshtml",dsrooms.dsRoom(cityName,IdPrice));
         }
         [HttpGet]
@@ -38,7 +39,7 @@ namespace Booking.Controllers
             ViewBag.CountRoomWithHotelType = dsrooms.CountRoomWithHotelType(IDHotelType);
             var hotelType = db.hotel_type.FirstOrDefault(r => r.id == IDHotelType);
             ViewBag.HotelType = hotelType.hotel_type1;
-            ViewBag.image = new mapImage().GetImage();
+           
             return View("~/Views/Hotel/Index.cshtml",dsrooms.dsRoom(IDHotelType));
         }
         [HttpGet]
@@ -54,6 +55,11 @@ namespace Booking.Controllers
         public ActionResult Checkin()
         {
             return View();
+        }
+        [HttpPost]
+        public ActionResult SaveCheckin()
+        {
+            return RedirectToAction("Index","Hotel");
         }
     }
 }

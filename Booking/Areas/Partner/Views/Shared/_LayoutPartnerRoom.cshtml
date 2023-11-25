@@ -12,8 +12,7 @@
           crossorigin="anonymous" />
     <link rel="stylesheet" href="~/Content/main.css" />
     <link rel="stylesheet" href="~/Content/hotel.css" />
-    <link rel="stylesheet" href="~/Content/roomDetail.css" />
-    <link rel="stylesheet" href="~/Areas/Content/css/main.css" />
+    <link rel="stylesheet" href="~/Areas/Content/css/room.css" />
     <script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
 
 
@@ -21,7 +20,7 @@
 </head>
 <body>
     <header class="header mb-5">
-        <div class="overlay"></div>
+
         <div class="container navbar py-3">
             <div class="header__logo">
                 <a href="~/Home/Index"> <span>Booking Hotels</span></a>
@@ -29,7 +28,7 @@
             <div class="header__nav d-flex">
                 <div class="header__nav-flag">
                     <div class="dropdown rounded">
-                       
+
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item d-flex "
                                href="#">
@@ -45,14 +44,14 @@
                                      class="rounded-circle  flag-image mx-2" />
                                 <span>English</span>
                             </a>
-                           
+
                         </div>
                     </div>
                 </div>
                 <!-- <div class="header__nav-res ml-5">
-                  <button type="button" class="btn btn-light mr-2">Đăng Ký</button>
-                  <button type="button" class="btn btn-light">Đăng Nhập</button>
-                </div> -->
+              <button type="button" class="btn btn-light mr-2">Đăng Ký</button>
+              <button type="button" class="btn btn-light">Đăng Nhập</button>
+            </div> -->
                 <!-- khi co user dang nhap -->
 
                 <div class="header__nav-user ml-3">
@@ -64,14 +63,14 @@
                             <span class="user-name">Nguyễn Chương</span>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item btn header__nav-user--item" href="~/Partner/Home">
+                            <button class="dropdown-item btn header__nav-user--item" type="button">
                                 <i class='bx bx-home-alt-2'></i>
                                 <span>Quản lý Chỗ Nghỉ</span>
-                            </a>
-                            <a class="dropdown-item btn header__nav-user--item" href="~/Partner/Home/AddRoom">
+                            </button>
+                            <button class="dropdown-item btn header__nav-user--item" type="button">
                                 <i class='bx bx-add-to-queue'></i>
                                 <span>Thêm Chỗ Nghỉ</span>
-                            </a>
+                            </button>
                             <button class="dropdown-item btn header__nav-user--item" type="button">
                                 <i class='bx bx-log-out-circle'></i>
                                 <span>Đăng xuất</span>
@@ -81,11 +80,26 @@
                 </div>
             </div>
         </div>
-        <div class="container mt-5 d-flex flex-column align-content-center">
-            <h3 class="header__title">Chào <span class="text-danger">Nguyễn Chương</span> <br /> Đăng chỗ nghỉ của Quý vị trên Booking.com và bắt đầu đón tiếp khách thật nhanh chóng!</h3>
+
+        <div class="container header_links d-flex mt-2">
+            <a class="text-white d-flex flex-column text-center" href="~/Partner/RoomDetail" >
+                <i class='bx bx-home-alt'></i>
+                <span>Trang Chủ</span>
+            </a>
+            <a class="text-white d-flex flex-column text-center" href="~/Partner/RoomDetail/BookRoom">
+                <i class='bx bx-bed'></i>
+                <span>Đặt Phòng</span>
+            </a>
+            <a class="text-white d-flex flex-column  text-center" href="~/Partner/RoomDetail/InfoRoom">
+                <i class='bx bx-edit-alt'></i>
+                <span>Thông Tin Phòng</span>
+            </a>
+            <a class="text-white d-flex flex-column text-center ">
+                <i class='bx bx-calendar-check'></i>
+                <span>Hóa Đơn</span>
+            </a>
         </div>
-       
-       
+
     </header>
     <div>
         @RenderBody()

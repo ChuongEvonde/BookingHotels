@@ -54,6 +54,7 @@
           <Property Name="city_id" Type="int" />
           <Property Name="price_level_id" Type="int" />
           <Property Name="status" Type="nvarchar" MaxLength="255" />
+          <Property Name="approve" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="roomDetail">
           <Key>
@@ -224,6 +225,7 @@
           <NavigationProperty Name="price_level" Relationship="Self.FK_room_price_level" FromRole="room" ToRole="price_level" />
           <NavigationProperty Name="roomDetails" Relationship="Self.FK_roomDetail_room" FromRole="room" ToRole="roomDetail" />
           <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="approve" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="roomDetail">
           <Key>
@@ -378,6 +380,7 @@
           <EntitySetMapping Name="rooms">
             <EntityTypeMapping TypeName="Booking_HotelsModel.room">
               <MappingFragment StoreEntitySet="room">
+                <ScalarProperty Name="approve" ColumnName="approve" />
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="hotel_name" ColumnName="hotel_name" />

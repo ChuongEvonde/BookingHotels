@@ -13,18 +13,18 @@ namespace Booking.Models
             var data = (from room in db.rooms
                         join city in db.cities on room.city_id equals city.id
                         join priceLevel in db.price_level on room.price_level_id equals priceLevel.id
-                        where city.city_name == cityName && (priceLevel.id == Idprice || Idprice == null)
+                        where city.city_name == cityName && (priceLevel.id == Idprice || Idprice == null) && room.status == "Còn Trống" && room.approve == "Đã Duyệt"
                         select room
 
              ).ToList();
             return data;
         }
-        public List<room> dsRoom( int? IDHotelType)
+        public List<room> dsRoom( int IDHotelType)
         {
             Booking_HotelsEntities db = new Booking_HotelsEntities();
             var data = (from room in db.rooms
                         join hotel_type in db.hotel_type on room.hotel_type_id equals hotel_type.id
-                        where hotel_type.id == IDHotelType || IDHotelType == null
+                        where hotel_type.id == IDHotelType && room.status == "Còn Trống" && room.approve == "Đã Duyệt"
                         select room).ToList();
             return data;
         }
@@ -44,13 +44,13 @@ namespace Booking.Models
             {
                 id = name.id;
             }
-            var count = db.rooms.Count(r => r.city_id == id);
+            var count = db.rooms.Count(r => r.city_id == id && r.approve == "Đã Duyệt" && r.status == "Còn Trống");
             return count;
         }
         public int CountRoomWithHotelType(int IDHotelType)
         {
             Booking_HotelsEntities db = new Booking_HotelsEntities();
-            var count = db.rooms.Count(r => r.hotel_type_id == IDHotelType);
+            var count = db.rooms.Count(r => r.hotel_type_id == IDHotelType && r.approve == "Đã Duyệt" && r.status == "Còn Trống");
             return count;
         }
 

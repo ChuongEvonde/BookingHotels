@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "RoomDetail";
+    Layout = "~/Areas/Partner/Views/Shared/_LayoutPartnerRoom.cshtml";
+}
+
+<div class="container">
+    <div class="room__box d-flex p-3 border rounded mb-5 general ">
+        <div class="room__box-img mr-4">
+            <img src="~/Content/Images/canho.jpg" class="rounded" />
+        </div>
+        <div class="row room__box-content w-100">
+            <div class="col-8">
+                <h4 class="text-primary font-weight-bold">Tên Gì Đó</h4>
+                <div class="room__box-address mb-3">
+                    <a class="text-primary text-md font-weight-bold">Địa điểm</a>
+                    <span class="font-weight-light text-md mx-3">gần biển</span>
+                    <span class="text-md font-weight-light">Gần biển</span>
+                </div>
+                <div class="room__box-sale bg-success d-inline py-1 px-2 text-md text-light rounded  ">Ữu đãi cuối năm</div>
+                <div class="room__box-decs mt-3 d-flex flex-column border-left border-susccess pl-3">
+                    <span class="text-sm-left font-weight-bold">Phòng Đơn</span>
+                    <span class="my-2 text-sm-left font-weight-light ">2 phòng ngủ</span>
+                    <span class="text-danger font-weight-bold">Chỉ còn lại 2 căn với giá này trên trang chúng tôi</span>
+                </div>
+            </div>
+            <div class="col-4 ">
+                <div class="room__box-price d-flex flex-column gap-3 h-100 justify-content-end ">
+                    <span class="font-weight-light text-sm">1 đêm 2 người lớn</span>
+                    <span style="font-size: 25px" class=" text-nowrap font-weight-bold">20000</span>
+                    <span class="font-weight-light text-sm">Đã bao gồm thuế và phí</span>
+                    <button class="btn btn-primary mt-3" type="submit">Xem Chỗ Trống</button>
+                </div>
+            </div>
+        </div>
+        <div class="room__heart ">
+            <i class='bx bx-heart'></i>
+            <i class='bx bxs-heart '></i>
+        </div>
+    </div>
+    <h3>Tổng quan hôm nay</h3>
+    <div class="general_list">
+        <div class="general_item">
+            <i class='bx bx-list-ul'></i>
+            <span class="general_quality">0</span>
+            <span>Đặt Phòng</span>
+        </div>
+        <div class="general_item">
+            <i class='bx bxs-file-import'></i>
+            <span class="general_quality">0</span>
+            <span>Khách Đến</span>
+        </div>
+        <div class="general_item">
+            <i class='bx bxs-message-x'></i>
+            <span class="general_quality">0</span>
+            <span>Lượt Hủy</span>
+        </div>
+        <div class="general_item">
+            <i class='bx bx-message-square-minus'></i>
+            <span class="general_quality">0</span>
+            <span>Đánh Giá</span>
+        </div>
+    </div>
+</div>
+

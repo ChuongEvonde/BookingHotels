@@ -243,6 +243,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Partner\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Partner\Controllers\RoomDetailController.cs" />
     <Compile Include="Areas\Partner\PartnerAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HotelController.cs" />
@@ -295,6 +296,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Content\css\main.css" />
+    <Content Include="Areas\Content\css\room.css" />
     <Content Include="Areas\Content\js\main.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -347,6 +349,10 @@
     <Content Include="Areas\Partner\Views\Home\Index.cshtml" />
     <Content Include="Areas\Partner\Views\Home\AddRoom.cshtml" />
     <Content Include=".editorconfig" />
+    <Content Include="Areas\Partner\Views\Shared\_LayoutPartnerRoom.cshtml" />
+    <Content Include="Areas\Partner\Views\RoomDetail\BookRoom.cshtml" />
+    <Content Include="Areas\Partner\Views\RoomDetail\InfoRoom.cshtml" />
+    <Content Include="Areas\Partner\Views\RoomDetail\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

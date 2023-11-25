@@ -1,2 +1,48 @@
-﻿<h2>sd</h2>
-<a href="~/Partner/Home/AddRoom">Thêm Chỗ Nghỉ Mới</a>
+﻿@model List<Booking.Models.mapRoom>
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Partner/Views/Shared/_LayoutPartnerMain.cshtml";
+}
+<div class="container ">
+    <div class="d-flex justify-content-between">
+        <h3 class="font-weight-bold">Trang chủ Nhóm chỗ nghỉ</h3>
+        <a class="btn btn-primary" href="~/Partner/Home/AddRoom" role="button">Đăng Chỗ Nghỉ</a>
+    </div>
+   
+
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Chỗ nghỉ</th>
+                <th>Trạng thái trên Booking.com</th>
+                <th>Đến trong 48 giờ tới</th>
+                <th>Rời đi trong 48 giờ tới</th>
+                <th>Tin nhắn từ khách</th>
+                <th>Tin nhắn từ BookingHotels</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>
+                    <a href="~/Partner/RoomDetail">Chỗ nghỉ A</a>
+                </td>
+                <td>Đã xác nhận</td>
+                <td>15/11/2023</td>
+                <td>20/11/2023</td>
+                <td>Chưa có</td>
+                <td>Chưa có</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Chỗ nghỉ B</td>
+                <td>Chưa xác nhận</td>
+                <td>20/11/2023</td>
+                <td>25/11/2023</td>
+                <td>Có</td>
+                <td>Chưa có</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
