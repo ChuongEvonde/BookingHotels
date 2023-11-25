@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\BookingHotels-Lock",
+    "\\BookingHotels-Lock\\Booking",
+    "\\BookingHotels-Lock\\Booking\\Areas",
+    "\\BookingHotels-Lock\\Booking\\Areas\\Partner",
+    "\\BookingHotels-Lock\\Booking\\Areas\\Partner\\Controllers",
+    "\\BookingHotels-Lock\\Booking\\Controllers",
+    "\\BookingHotels-Lock\\Booking\\Views",
+    "\\BookingHotels-Lock\\Booking\\Views\\Home",
+    "\\BookingHotels-Lock\\Booking\\Views\\Hotel"
+  ],
+  "SelectedNode": "\\BookingHotels-Lock\\Booking\\Areas\\Partner\\Controllers\\HomeController.cs",
+  "PreviewInSolutionExplorer": false
+}

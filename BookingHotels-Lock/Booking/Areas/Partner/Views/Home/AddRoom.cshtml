@@ -1,0 +1,197 @@
+﻿@model List<Booking.Models.mapRoom>
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Partner/Views/Shared/_LayoutPartnerMain.cshtml";
+}
+<div class="container">
+    <h4 style="font-weight:bold">Nhập Thông Tin Liên Quan Đến Nơi Nghỉ Của Mình</h4>
+    @using (Html.BeginForm("AddRoom", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.ValidationSummary(true)
+        <div class="room__box ">
+            <div class="room__form">
+                <h5>Loại Chỗ Nghỉ</h5>
+                <select class="custom-select custom-select-lg mb-3" name="hotelType">
+                    <option selected disabled>Loại Chỗ Nghỉ</option>
+                    @foreach (var item in new Booking.Models.mapHotel_type().dsHotel_Type())
+                    {
+                        <option value="@item.id">@item.hotel_type1</option>
+                    }
+                </select>
+                   
+                <h5>Tên Chỗ Nghỉ</h5>
+                <input type="text" name="hotelName" placeholder="Nhập tên chỗ nghỉ" />
+               
+                <h5 class="mt-4">Tên Phòng</h5>
+                <input type="text" name="roomName" placeholder="Nhập tên phòng" />
+
+                <div class="room__btn mt-3">
+                    <button type="button" class="btn-prev"><i class='bx bxs-chevron-left'></i></button>
+                    <button type="button" class="btn btn-primary btn-next ">Tiếp Tục</button>
+                </div>
+            </div>
+            <div class="suggest">
+                <div>
+                    <i class='bx bx-like'></i>
+                    <div>
+                        <h4>Tôi nên chú ý điều gì khi chọn tên?</h4>
+                        <ul class="d-flex flex-column gap-3">
+                            <li>Chọn tên ngắn và hấp dẫn</li>
+                            <li>Tránh sử dụng chữ viết tắt</li>
+                            <li>Đúng với thực tế</li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <i class='bx bx-question-mark'></i>
+                    <div>
+                        <h4>Tại sao tôi cần đặt tên cho chỗ nghỉ của mình?</h4>
+                        <p>Tên này giống như tiêu đề đăng ký chỗ nghỉ của Quý vị trên trang web của chúng tôi. Tên này sẽ cho khách biết thông tin cụ thể về chỗ nghỉ, vị trí hoặc những gì Quý vị cung cấp.Điều này sẽ hiển thị cho bất cứ ai truy cập trang web của chúng tôi, vì vậy đừng bao gồm địa chỉ của Quý vị trong tên.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="room__box active ">
+            <div class="room__form">
+                <h5>Tỉnh/Thành Phố</h5>
+                <select class="custom-select custom-select-lg mb-3" name="city">
+                    <option selected>Chọn Tỉnh/Thành Phố</option>
+                    @foreach (var item in ViewBag.City)
+                    {
+                        <option value="@item.id">@item.city_name</option>
+                    }
+                </select>
+                <h5 class="mt-2">Địa Điểm cụ thể</h5>
+                <input type="text" name="address" placeholder="Nhập địa điểm" />
+                <h5 class="mt-2">Mô tả địa điểm</h5>
+                <textarea name="des_address" placeholder="Ex: cách trung tâm bao nhiêu km, gần biền không...?"></textarea>
+                <div class="room__btn mt-3">
+                    <button type="button" class="btn-prev"><i class='bx bxs-chevron-left'></i></button>
+                    <button type="button" class="btn btn-primary btn-next ">Tiếp Tục</button>
+                </div>
+            </div>
+            <div class="suggest">
+                <div>
+                    <i class='bx bx-like'></i>
+                    <div>
+                        <h4>Thông tin gì cần được bao gồm trong địa chỉ của tôi?</h4>
+                        <ul class="d-flex flex-column gap-3">
+                            <li>Bao gồm tên đường và số nhà</li>
+                            <li>
+                                Hãy viết tên đường chính xác
+                            </li>
+                            <li>Dùng địa chỉ thực sự của chỗ nghỉ, không dùng địa chỉ văn phòng hay nhà của Quý vị</li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <i class='bx bx-question-mark'></i>
+                    <div>
+                        <h4>Tại sao tôi cần thêm địa chỉ của mình?</h4>
+                        <p>Khi khách đặt chỗ nghỉ của Quý vị, đây là địa chỉ sẽ được chia sẻ với họ. Điều quan trọng là địa chỉ này phải chính xác để khách có thể dễ dàng tìm thấy chỗ nghỉ của Quý vị.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="room__box  active ">
+            <div class="room__form">
+                <h5>Loại Giường</h5>
+                <select class="custom-select custom-select-lg mb-3" name="roomType">
+                    <option selected>Chọn Loại Giường</option>
+                    <option value="Giường Đơn">Giường Đơn</option>
+                    <option value="Giường Đôi">Giường Đôi</option>
+                    <option value="Giường Lớn">Giường Lớn</option>
+                    <option value="Giường Cực Lớn">Giường Cực Lớn</option>
+                </select>
+                <h5 class="mt-2">Tiện Nghi Trong Phòng</h5>
+                <div class="d-flex flex-wrap" style="gap:10px">
+                    @foreach (var item in ViewBag.Convenients)
+                    {
+                        <label class="font-weight-light hotel__fillter-item mt-2" style="font-size:14px">
+                            <input type="checkbox" value="@item.convenient_name" data-icon="@item.icon" data-convenient="@item.convenient_name" name="convenient"  >
+                           <i class=" @item.icon"></i>
+                            @item.convenient_name
+                            <span class="checkmark"></span>
+                        </label>
+                    }
+
+                </div>
+                <h5 class="mt-2">Mô tả chi tiết phòng</h5>
+                <textarea name="desRoom" id="editor" class="mb-3"></textarea>
+                <div class="room__btn mt-3">
+                    <button type="button" class="btn-prev"><i class='bx bxs-chevron-left'></i></button>
+                    <button type="button" class="btn btn-primary btn-next ">Tiếp Tục</button>
+                </div>
+            </div>
+            <div class="suggest">
+                <div>
+                    <i class='bx bx-question-mark'></i>
+                    <div>
+                        <h4>Nếu tôi không thấy tiện nghi mà tôi có cung cấp thì sao?</h4>
+                        <p>Các tiện nghi được liệt kê tại đây là các tiện nghi được khách tìm kiếm nhiều nhất. Sau khi hoàn tất đăng ký, Quý vị có thể thêm nhiều tiện nghi khác qua danh sách đầy đủ hơn trên extranet, kênh mà Quý vị sẽ sử dụng để quản lý chỗ nghỉ của mình.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="room__box active  ">
+            <div class="room__form">
+                <h5>Đăng tải ít nhất 5 ảnh của chỗ nghỉ. Càng đăng nhiều, Quý vị càng có cơ hội nhận đặt phòng. Quý vị có thể thêm ảnh sau.</h5>
+                <div class="upload-iamge">
+                    <input type="file" id="file-input" name="upload_image" accept="image/png, image/jpeg" onchange="preview()" multiple>
+                    <label for="file-input">
+                        <i class='bx bx-upload'></i> &nbsp; Choose A Photo
+                    </label>
+                    <p class="text-center" id="num-of-files">No Files Chosen</p>
+                    <div id="images"></div>
+                </div>
+                <div class="room__btn mt-3">
+                    <button type="button" class="btn-prev"><i class='bx bxs-chevron-left'></i></button>
+                    <button type="button" class="btn btn-primary btn-next ">Tiếp Tục</button>
+                </div>
+            </div>
+            <div class="suggest">
+                <div>
+                    <i class='bx bx-question-mark'></i>
+                    <div>
+                        <h4>Nếu tôi không có ảnh chụp chuyên nghiệp thì sao?</h4>
+                        <p>Không sao cả! Quý vị có thể sử dụng smartphone hoặc máy ảnh kỹ thuật số.Sau đây là một số mẹo chụp ảnh đẹp cho chỗ nghỉ của Quý vị <br /> Tốt nhất Quý vị nên tránh sử dụng ảnh mà mình không biết tác giả. Quý vị chỉ nên sử dụng ảnh của người khác khi đã có sự chấp thuận của họ.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="room__box active ">
+            <div class="room__form">
+                <h5>Mức Giá Phòng Của Bạn</h5>
+                <select class="custom-select custom-select-lg mb-3" name="price_level">
+                    <option selected disabled>Chọn mức giá</option>
+                    @foreach (var item in new Booking.Models.mapPirce_Level().dsPrice())
+                    {
+                        <option value="@item.id">@item.price_level1</option>
+                    }
+                </select>
+                <h5 class="mt-2">Giá cụ thể / 1 đêm</h5>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">VND</span>
+                    </div>
+                    <input type="text" name="price" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                </div>
+                <div class="room__btn mt-3">
+                    <button type="button" class="btn-prev"><i class='bx bxs-chevron-left'></i></button>
+                    <button type="submit" class="btn btn-primary btn-post ">Đăng Chỗ Nghỉ</button>
+                </div>
+            </div>
+            <div class="suggest">
+                <div>
+                    <i class='bx bx-question-mark'></i>
+                    <div>
+                        <h4>Nếu tôi cảm thấy chưa chắc chắn về giá thì sao?</h4>
+                        <p>Đừng lo lắng, Quý vị có thể đổi lại bất cứ lúc nào. Thậm chí Quý vị có thể thiết lập giá cuối tuần, giữa tuần và theo mùa, nhờ đó giúp Quý vị kiểm soát doanh thu tốt hơn..</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+
