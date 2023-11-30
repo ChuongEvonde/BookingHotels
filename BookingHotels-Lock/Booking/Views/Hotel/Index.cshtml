@@ -1,0 +1,111 @@
+﻿@model List<Booking.Models.room>
+@{
+    ViewBag.Title = "NoiNghi";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+<link rel="stylesheet" href="~/Content/hotel.css" />
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-3 hotel__fillter border rounded">
+            <h4 class="my-3 font-weight-bold text-center">Chọn Lọc Theo</h4>
+            @{Html.BeginForm("fillter", "Home");}
+        <div class="hotel__fillter-group border-top pl-3 ">
+            <p class="font-weight-bold mt-2">Ngân sách của bạn (mỗi đêm)</p>
+            <span class="font-weight-light ">VND 100.000 - VND 3.000.000+</span>
+            @foreach (var item in new Booking.Models.mapPirce_Level().dsPrice())
+            {
+                <label class="font-weight-light hotel__fillter-item mt-2" style="font-size:14px">
+                    @Html.RadioButton("price",@item.id)  @item.price_level1
+                    <span class="checkmark"></span>
+                </label>
+            }
+        </div>
+        <div class="hotel__fillter-group border-top pl-3 ">
+            <p class="font-weight-bold mt-2">Loại Chỗ Ở</p>
+            @foreach (var item in new Booking.Models.mapHotel_type().dsHotel_Type())
+            {
+                <label class="font-weight-light hotel__fillter-item mt-2" style="font-size:14px">
+                    @Html.RadioButton("category",@item.id)  @item.hotel_type1
+                    <span class="checkmark"></span>
+                </label>
+            }
+          
+        </div>
+            <div class="hotel__fillter-group border-top pl-3 ">
+                <p class="font-weight-bold mt-2">Tùy Chọn Loại Giường</p>
+                @foreach(var item in new Booking.Models.mapRoom().rooms())
+            {
+                <label class="font-weight-light hotel__fillter-item mt-2" style="font-size:14px">
+                    @Html.RadioButton("roomtype",item.id)  @item.room_type
+                    <span class="checkmark"></span>
+                </label>
+
+            }
+               
+            </div>
+            <div class="d-flex justify-content-center align-item-center mt-3" >
+                <button class="btn btn-primary">Tìm Phòng</button>
+            </div>
+
+            @{Html.EndForm();}
+        </div>
+        <div class="col-9">
+            @if (ViewBag.ResultType == "FirstActionResult")
+            {
+                <h4>@ViewBag.Intro</h4>
+            }
+            else if(ViewBag.ResultType == "CountRoomWithHotelType")
+            {
+        <h4>Tìm Thấy  <span class="text-danger">@ViewBag.CountRoomWithHotelType</span> Loại Nghỉ Là @ViewBag.HotelType </h4>
+            }
+            else
+            {
+
+                <h4>@ViewBag.CityName: <span>Tìm thấy <span class="text-danger">@ViewBag.CountRoom</span> Nơi Nghỉ</span> </h4>
+            }
+            <div class="room__list ">
+                @foreach (var item in Model)
+                {
+                    <form method="get" action="@Url.Action("RoomDetail", "Hotel", new { roomId = item.id})">
+                        <input type="hidden" name="roomId" value="@item.id" />
+                        <div class="room__box d-flex p-3 border rounded mb-5 ">
+                            <div class="room__box-img mr-4">
+                                <img src="~/Content/Images/@item.avatar_hotel" class="rounded" />
+                            </div>
+                            <div class="row room__box-content w-100">
+                                <div class="col-8">
+                                    <h4 class="text-primary font-weight-bold">@item.hotel_name</h4>
+                                    <div class="room__box-address mb-3">
+                                        <a class="text-primary text-md font-weight-bold">@item.address</a>
+                                        <span class="font-weight-light text-md mx-3">@item.des_address</span>
+                                        <span class="text-md font-weight-light">Gần biển</span>
+                                    </div>
+                                    <div class="room__box-sale bg-success d-inline py-1 px-2 text-md text-light rounded  ">Ữu đãi cuối năm</div>
+                                    <div class="room__box-decs mt-3 d-flex flex-column border-left border-susccess pl-3">
+                                        <span class="text-sm-left font-weight-bold">@item.room_name</span>
+                                        <span class="my-2 text-sm-left font-weight-light ">@item.room_type</span>
+                                        <span class="text-danger font-weight-bold">Chỉ còn lại 2 căn với giá này trên trang chúng tôi</span>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="room__box-price d-flex flex-column gap-3 h-100 justify-content-end ">
+                                        <span class="font-weight-light text-sm">1 đêm 2 người lớn</span>
+                                        <span style="font-size: 25px" class=" text-nowrap font-weight-bold">@item.price</span>
+                                        <span class="font-weight-light text-sm">Đã bao gồm thuế và phí</span>
+                                        <button class="btn btn-primary mt-3" type="submit">Xem Chỗ Trống</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="room__heart ">
+                                <i class='bx bx-heart'></i>
+                                <i class='bx bxs-heart '></i>
+                            </div>
+                        </div>
+                    </form>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
